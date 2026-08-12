@@ -32,7 +32,7 @@ jobs:
 
       - name: Close old PRs without enough positive reactions
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.CLOSE_BOT_TOKEN }}
         run: |
           max_close="${{ inputs['max-close'] }}"
           if [ -z "$max_close" ]; then
@@ -48,3 +48,4 @@ jobs:
           fi
 
           bun script/github/close-prs.ts "${args[@]}"
+        continue-on-error: true
