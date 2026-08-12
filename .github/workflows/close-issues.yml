@@ -20,5 +20,6 @@ jobs:
 
       - name: Close stale issues
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.CLOSE_BOT_TOKEN }}
         run: bun script/github/close-issues.ts
+        continue-on-error: true
